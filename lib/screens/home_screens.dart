@@ -76,6 +76,39 @@ class _HomeScreenState extends State<HomeScreen> {
             );
 		}
 	}
+  Widget getTimeTitle(DateTime time) {
+    // Lấy giờ từ đối tượng DateTime
+    int hour = time.hour;
+
+    if (hour >= 5 && hour < 11) {
+      return Text(
+        'Good Morning',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 32,
+          fontWeight: FontWeight.bold,
+        ),
+      );
+    } else if (hour >= 11 && hour < 17) {
+      return Text(
+        'Good Afternoon',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 32,
+          fontWeight: FontWeight.bold,
+        ),
+      );
+    } else {
+      return Text(
+        'Good Evening',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 32,
+          fontWeight: FontWeight.bold,
+        ),
+      );
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,14 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
 														),
 													),
 													const SizedBox(height: 8),
-													const Text(
-														'Good Morning',
-														style: TextStyle(
-															color: Colors.white,
-															fontSize: 32,
-															fontWeight: FontWeight.bold
-														),
-													),
+                          getTimeTitle(DateTime.now()),
 													getWeatherIcon(state.weather.weatherConditionCode!),
 													Center(
 														child: Text(
